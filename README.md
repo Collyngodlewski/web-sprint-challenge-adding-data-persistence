@@ -21,9 +21,9 @@ In this project you will be given a set of requirements and must design a databa
 
 ### Files to Complete
 
-1. `package.json`
-2. `index.js`
-3. `api/server.js`
+1. `package.json` x
+2. `index.js`  x
+3. `api/server.js` x
 4. `model.js` inside `api/project`, `api/resource` and `api/task`
 5. `router.js` inside `api/project`, `api/resource` and `api/task`
 6. migration file(s)
@@ -35,50 +35,50 @@ The project needs some additional NPM dependencies in order to work.
 
 ### Required Scripts
 
-Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file.
+Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.json` file. x
 
 ### Required Tables
 
 Build the migration(s) in Knex inside the `data/migrations` folder using appropriate data types and constraints. **You must use the table names and the column names described below.** To give a primary key a name different than `id`, do `table.increments("project_id")` instead of `table.increments()`.
 
-- [ ] A **project** is what needs to be done and is stored in a `projects` table with the following columns:
+- [x] A **project** is what needs to be done and is stored in a `projects` table with the following columns:
 
-  - [ ] `project_id` - primary key
-  - [ ] `project_name` - required
-  - [ ] `project_description` - optional
-  - [ ] `project_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [x] `project_id` - primary key
+  - [x] `project_name` - required
+  - [x] `project_description` - optional
+  - [x] `project_completed` - the database defaults it to `false` (integer 0) if not provided
 
-- [ ] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
+- [x] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
 
-  - [ ] `resource_id` - primary key
-  - [ ] `resource_name` - required and unique
-  - [ ] `resource_description` - optional
+  - [x] `resource_id` - primary key
+  - [x] `resource_name` - required and unique
+  - [x] `resource_description` - optional
 
-- [ ] A **task** is one of the steps needed to complete a project and is stored in a `tasks` table with the following columns:
+- [x] A **task** is one of the steps needed to complete a project and is stored in a `tasks` table with the following columns:
 
-  - [ ] `task_id` - primary key
-  - [ ] `task_description` - required
-  - [ ] `task_notes` - optional
-  - [ ] `task_completed` - the database defaults it to `false` (integer 0) if not provided
-  - [ ] `project_id` - required and points to an actual `project_id` in the `projects` table
+  - [x] `task_id` - primary key
+  - [x] `task_description` - required
+  - [x] `task_notes` - optional
+  - [x] `task_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [x] `project_id` - required and points to an actual `project_id` in the `projects` table
 
-- [ ] A **resource assignment** connects a resource and a project, and is stored in a `project_resources` table. You decide what columns to use.
+- [x] A **resource assignment** connects a resource and a project, and is stored in a `project_resources` table. You decide what columns to use.
 
 ### Required Endpoints
 
 Build an API inside the `api` folder with endpoints for:
 
-- [ ] `[POST] /api/resources`
+- [x] `[POST] /api/resources`
   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`
 
-- [ ] `[GET] /api/resources`
+- [x] `[GET] /api/resources`
   - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
 
-- [ ] `[POST] /api/projects`
+- [x] `[POST] /api/projects`
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}`
 
-- [ ] `[GET] /api/projects`
+- [x] `[GET] /api/projects`
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `[{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}]`
 
@@ -110,6 +110,11 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+  Relational databases holds data with relational tables. SQL is used to go through the tables and is able to manipulate and look at the data.
+
 2. Why do tables need a Primary Key?
-3. What is the name given to a table column that references the Primary Key on another table?
-4. What do we need in order to have a _many to many_ relationship between two tables?
+  Primary keys are unique and can be used to become foreign keys and link tables together
+
+3. What is the name given to a table column that references the Primary Key on another table? The name given is foreign key and it links to the primary key
+
+4. What do we need in order to have a _many to many_ relationship between two tables? We need to link the two together using an intermediate table. A primary key/ foreign key would be used. We could use product and a customer. Customers can purchase various products, and products can be purchased by many customers.
